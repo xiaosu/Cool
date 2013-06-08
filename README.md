@@ -1,0 +1,4 @@
+Cool
+====
+
+For windows azure
