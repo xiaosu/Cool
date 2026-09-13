@@ -1,0 +1,222 @@
+/* Xiaosu Zhou — personal site
+   Plain CSS, no build step, no dependencies. */
+
+:root {
+   color-scheme: light dark;
+
+   --bg: #fbfaf8;
+   --surface: #ffffff;
+   --text: #1c1d21;
+   --text-soft: #55585f;
+   --text-faint: #83878f;
+   --rule: #e6e3dd;
+   --accent: #1f6f6b;
+
+   --measure: 46rem;
+   --gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+   :root {
+      --bg: #15161a;
+      --surface: #1c1e23;
+      --text: #ececed;
+      --text-soft: #a9adb5;
+      --text-faint: #777c85;
+      --rule: #2c2f36;
+      --accent: #6fcfc6;
+   }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+   margin: 0;
+   padding: 0;
+   background: var(--bg);
+   color: var(--text);
+   font: 400 1rem/1.65 ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+         Roboto, "Helvetica Neue", Arial, sans-serif;
+   font-feature-settings: "kern" 1;
+   text-rendering: optimizeLegibility;
+}
+
+.wrap {
+   max-width: var(--measure);
+   margin: 0 auto;
+   padding-inline: 1.5rem;
+   padding-block: clamp(3rem, 9vw, 6rem) 4rem;
+}
+
+a {
+   color: var(--accent);
+   text-decoration-thickness: 1px;
+   text-underline-offset: 2px;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+/* ---------- header ---------- */
+
+.masthead { margin-bottom: var(--gap); }
+
+.name {
+   margin: 0 0 .35rem;
+   font-size: clamp(2.1rem, 6vw, 3rem);
+   font-weight: 650;
+   letter-spacing: -.025em;
+   line-height: 1.1;
+}
+
+.headline {
+   margin: 0 0 1.15rem;
+   font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+   font-weight: 400;
+   color: var(--text-soft);
+   letter-spacing: -.005em;
+}
+
+/* ---------- sections ---------- */
+
+section { margin-bottom: var(--gap); }
+
+h2 {
+   margin: 0 0 1.6rem;
+   padding-bottom: .5rem;
+   border-bottom: 1px solid var(--rule);
+   font-size: .78rem;
+   font-weight: 600;
+   letter-spacing: .12em;
+   text-transform: uppercase;
+   color: var(--text-faint);
+}
+
+.lede {
+   margin: 0;
+   font-size: 1.06rem;
+   color: var(--text-soft);
+}
+
+.lede + .lede { margin-top: .9rem; }
+
+/* ---------- experience ---------- */
+
+.role { margin-bottom: 2.25rem; }
+.role:last-child { margin-bottom: 0; }
+
+.role-head {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   justify-content: space-between;
+   gap: .15rem .75rem;
+   margin-bottom: .15rem;
+}
+
+.role-title {
+   margin: 0;
+   font-size: 1.06rem;
+   font-weight: 600;
+   letter-spacing: -.01em;
+}
+
+.dates {
+   font-size: .82rem;
+   font-variant-numeric: tabular-nums;
+   color: var(--text-faint);
+   white-space: nowrap;
+}
+
+.employer {
+   margin: 0 0 .7rem;
+   font-size: .95rem;
+   color: var(--accent);
+}
+
+.role ul {
+   margin: 0;
+   padding-left: 1.1rem;
+   color: var(--text-soft);
+   font-size: .95rem;
+}
+
+.role li { margin-bottom: .35rem; }
+.role li::marker { color: var(--text-faint); }
+
+/* ---------- skills ---------- */
+
+.skill-group { margin-bottom: 1.35rem; }
+.skill-group:last-child { margin-bottom: 0; }
+
+.skill-group h3 {
+   margin: 0 0 .55rem;
+   font-size: .85rem;
+   font-weight: 600;
+   color: var(--text-soft);
+}
+
+.tags {
+   display: flex;
+   flex-wrap: wrap;
+   gap: .4rem;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+.tags li {
+   padding: .2rem .6rem;
+   border: 1px solid var(--rule);
+   border-radius: 999px;
+   background: var(--surface);
+   font-size: .82rem;
+   color: var(--text-soft);
+}
+
+/* ---------- compact entries ---------- */
+
+.entry {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: baseline;
+   justify-content: space-between;
+   gap: .1rem .75rem;
+   padding-bottom: .9rem;
+   margin-bottom: .9rem;
+   border-bottom: 1px solid var(--rule);
+}
+
+.entry:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+
+.entry-main { margin: 0; font-size: .98rem; font-weight: 600; }
+.entry-sub { margin: .1rem 0 0; font-size: .9rem; color: var(--text-soft); flex-basis: 100%; }
+
+.plain { margin: 0; padding-left: 1.1rem; color: var(--text-soft); font-size: .95rem; }
+.plain li { margin-bottom: .4rem; }
+.plain li::marker { color: var(--text-faint); }
+
+/* ---------- footer ---------- */
+
+footer {
+   padding-top: 1.5rem;
+   border-top: 1px solid var(--rule);
+   font-size: .84rem;
+   color: var(--text-faint);
+}
+
+footer p { margin: 0; }
+
+/* ---------- print ---------- */
+
+@media print {
+   :root {
+      --bg: #fff; --surface: #fff; --text: #000; --text-soft: #222;
+      --text-faint: #555; --rule: #ccc; --accent: #000;
+   }
+   .wrap { max-width: none; padding: 0; }
+   section { margin-bottom: 1.5rem; page-break-inside: avoid; }
+   .role { page-break-inside: avoid; }
+   a { text-decoration: none; }
+}
