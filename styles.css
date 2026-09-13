@@ -77,6 +77,19 @@ a:hover { text-decoration-thickness: 2px; }
    color: var(--text-soft);
    letter-spacing: -.005em;
 }
+.contact {
+   display: flex;
+   flex-wrap: wrap;
+   gap: .35rem 1.15rem;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   font-size: .92rem;
+   color: var(--text-soft);
+}
+
+.contact a { color: inherit; text-decoration-color: var(--rule); }
+.contact a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
 /* ---------- sections ---------- */
 
