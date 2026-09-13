@@ -11,10 +11,6 @@
    --text-faint: #83878f;
    --rule: #e6e3dd;
    --accent: #1f6f6b;
-   --accent-soft: #e8f1f0;
-   --flag-bg: #fdf3d8;
-   --flag-text: #6d5410;
-   --flag-rule: #e6c96b;
 
    --measure: 46rem;
    --gap: clamp(2.5rem, 6vw, 4.5rem);
@@ -29,10 +25,6 @@
       --text-faint: #777c85;
       --rule: #2c2f36;
       --accent: #6fcfc6;
-      --accent-soft: #17302f;
-      --flag-bg: #2e2716;
-      --flag-text: #e2c976;
-      --flag-rule: #6b5a25;
    }
 }
 
@@ -85,20 +77,6 @@ a:hover { text-decoration-thickness: 2px; }
    color: var(--text-soft);
    letter-spacing: -.005em;
 }
-
-.contact {
-   display: flex;
-   flex-wrap: wrap;
-   gap: .45rem 1.15rem;
-   margin: 0;
-   padding: 0;
-   list-style: none;
-   font-size: .9rem;
-   color: var(--text-soft);
-}
-
-.contact a { color: inherit; text-decoration-color: var(--rule); }
-.contact a:hover { color: var(--accent); text-decoration-color: currentColor; }
 
 /* ---------- sections ---------- */
 
@@ -219,22 +197,6 @@ h2 {
 .plain li { margin-bottom: .4rem; }
 .plain li::marker { color: var(--text-faint); }
 
-/* ---------- placeholder flags (remove before publishing) ---------- */
-
-.flag {
-   margin: 0 0 1.5rem;
-   padding: .85rem 1rem;
-   border: 1px solid var(--flag-rule);
-   border-left-width: 3px;
-   border-radius: 4px;
-   background: var(--flag-bg);
-   color: var(--flag-text);
-   font-size: .88rem;
-}
-
-.flag strong { letter-spacing: .04em; text-transform: uppercase; font-size: .76rem; }
-.flag p { margin: .3rem 0 0; }
-
 /* ---------- footer ---------- */
 
 footer {
@@ -254,7 +216,6 @@ footer p { margin: 0; }
       --text-faint: #555; --rule: #ccc; --accent: #000;
    }
    .wrap { max-width: none; padding: 0; }
-   .flag { display: none; }
    section { margin-bottom: 1.5rem; page-break-inside: avoid; }
    .role { page-break-inside: avoid; }
    a { text-decoration: none; }
