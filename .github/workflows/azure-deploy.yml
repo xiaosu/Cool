@@ -1,0 +1,53 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'index.html'
+      - 'styles.css'
+      - '.github/workflows/azure-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://xiaosuzhou.azurewebsites.net/
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Only the site itself ships. The archived 2017 files, the notebook and
+      # the README stay in the repo and off the server.
+      - name: Stage site files
+        run: |
+          mkdir -p _site
+          cp index.html styles.css _site/
+          ls -l _site
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: xiaosuzhou
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: _site
+
+      - name: Verify the live page
+        run: |
+          sleep 15
+          for i in $(seq 1 10); do
+            if curl -sf -H 'Cache-Control: no-cache' https://xiaosuzhou.azurewebsites.net/ \
+               | grep -q 'Senior Analyst Programmer'; then
+              echo "Live site is serving the new page."
+              exit 0
+            fi
+            echo "attempt $i: not live yet"
+            sleep 10
+          done
+          echo "::error::Deployment reported success but the live page did not update."
+          exit 1
